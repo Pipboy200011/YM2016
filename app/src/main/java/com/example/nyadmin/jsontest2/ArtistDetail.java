@@ -1,14 +1,24 @@
 package com.example.nyadmin.jsontest2;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 public class ArtistDetail extends AppCompatActivity {
@@ -20,13 +30,16 @@ public class ArtistDetail extends AppCompatActivity {
     private String genresintent;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private String titleintent;
+    private ActionBar actionBar;
+    private FloatingActionButton fab;
+    private String linkintent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.artistdetail);
 
-        ImageView detailcover;
+        final ImageView detailcover;
         TextView detailalbums;
         TextView detailtracks;
         TextView detailgenre;
@@ -39,6 +52,7 @@ public class ArtistDetail extends AppCompatActivity {
         detaildescription = (TextView) findViewById(R.id.detaildescription);
 
         Intent intent = getIntent();
+        linkintent=intent.getStringExtra(MainActivity.EXTRA_LINK);
         titleintent=intent.getStringExtra(MainActivity.EXTRA_TITLE);
         coverintent = intent.getStringExtra(MainActivity.EXTRA_BCURL);
         albumsintent = intent.getStringExtra(MainActivity.EXTRA_ALBUMS);
@@ -67,8 +81,56 @@ public class ArtistDetail extends AppCompatActivity {
 
         Picasso.with(this)
                 .load(coverintent)
-                .resize(1500,1500)
+                .resize(1050,1050)
                 .centerInside()
-                .into(detailcover);
+                .into(detailcover, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Bitmap bitmap = ((BitmapDrawable)detailcover.getDrawable()).getBitmap();
+                        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+                            @Override
+                            public void onGenerated(Palette palette) {
+                                applyPalette(palette);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+    }
+
+    private void applyPalette(Palette palette) {
+        int primaryDark=getResources().getColor(R.color.colorPrimary);
+        int primary = getResources().getColor(R.color.colorPrimary);
+        collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(primary));
+        collapsingToolbarLayout.setStatusBarScrimColor(palette.getDarkMutedColor(primaryDark));
+        updateBackground((FloatingActionButton) findViewById(R.id.fab), palette);
+        supportStartPostponedEnterTransition();
+    }
+
+    private void updateBackground(FloatingActionButton fab, Palette palette) {
+        int lightVibrantColor = palette.getLightVibrantColor(getResources().getColor(android.R.color.white));
+        int vibrantColor = palette.getVibrantColor(getResources().getColor(R.color.colorYellow));
+
+        fab.setRippleColor(lightVibrantColor);
+        fab.setBackgroundTintList(ColorStateList.valueOf(vibrantColor));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkintent));
+                    startActivity(browserIntent);
+                }catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),"Link is not correct, opening Google",  Toast.LENGTH_LONG).show();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.ru#newwindow=1&q="+titleintent));
+                    startActivity(browserIntent);
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 }

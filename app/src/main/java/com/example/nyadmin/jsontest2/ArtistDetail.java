@@ -1,6 +1,6 @@
 package com.example.nyadmin.jsontest2;
 
-import android.Manifest;
+
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;

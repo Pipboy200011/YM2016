@@ -16,6 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     List<Artist> artists;
 
 
+
     final static String DB_NAME = "yandexartist.db";
     final static int DB_VERSION = 1;
     public final static String DB_TABLE = "Artist";
@@ -45,6 +46,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             COLUMN_DESCR + " TEXT, " +
             COLUMN_SMALL_COVER_URL + " TEXT, " +
             COLUMN_BIG_COVER_URL + " TEXT);";
+
+    static final String SQL_QUERY_DROP_TABLE = "DROP TABLE IF EXISTS " + DB_TABLE;
 
 
 
@@ -86,6 +89,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(DatabaseHelper.SQL_QUERY_DROP_TABLE);
+        onCreate(db);
 
     }
 }

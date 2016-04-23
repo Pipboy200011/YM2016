@@ -49,7 +49,7 @@ public class ArtistList extends CursorRecyclerViewAdapter<ArtistList.MyCardHolde
         viewHolder.albumsandtracksdb.setText("альбомов: "+albumsdb+" песен: "+tracksdb);
 
         String genresdb=cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_GENRES));
-        viewHolder.genresdb.setText(genresdb);
+        viewHolder.genresdb.setText(genresdb.substring(1,genresdb.length()-1));
     }
 
     @Override

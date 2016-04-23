@@ -64,7 +64,7 @@ public class ArtistDetailActivity extends AppCompatActivity {
         detailalbums.setText("альбомов: " + albumsintent);
         detailtracks.setText("песен: " + trakcsintent);
         detaildescription.setText(descrintent);
-        detailgenre.setText(genresintent);
+        detailgenre.setText(genresintent.substring(1,genresintent.length()-1));
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

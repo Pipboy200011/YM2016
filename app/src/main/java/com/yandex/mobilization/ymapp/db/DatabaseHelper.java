@@ -1,15 +1,15 @@
-package com.example.nyadmin.jsontest2;
+package com.yandex.mobilization.ymapp.db;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.yandex.mobilization.ymapp.json.JsonHepler;
+
 import java.util.List;
 
-/**
- * Created by Nyadmin on 10.04.2016.
- */
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     private final Context mcontext;
     private JsonHepler jsonhelper;
@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    final static String DB_NAME = "yandexartist.db";
+    public final static String DB_NAME = "yandexartist.db";
     final static int DB_VERSION = 1;
     public final static String DB_TABLE = "Artist";
     public static final String COLUMN_ID = "Artist_id";

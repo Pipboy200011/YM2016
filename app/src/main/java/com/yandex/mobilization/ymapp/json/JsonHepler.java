@@ -1,9 +1,12 @@
-package com.example.nyadmin.jsontest2;
+package com.yandex.mobilization.ymapp.json;
 
 import android.content.Context;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.yandex.mobilization.ymapp.db.Artist;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,9 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Nyadmin on 10.04.2016.
- */
+
 public class JsonHepler {
 
     List<Artist> artists;
@@ -41,6 +42,11 @@ public class JsonHepler {
         }
         return json;
     }
+
+
+
+
+
 }
 
 

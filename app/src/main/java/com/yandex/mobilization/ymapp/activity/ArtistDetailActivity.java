@@ -1,4 +1,4 @@
-package com.example.nyadmin.jsontest2;
+package com.yandex.mobilization.ymapp.activity;
 
 
 import android.content.Intent;
@@ -20,8 +20,9 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.yandex.mobilization.ymapp.R;
 
-public class ArtistDetail extends AppCompatActivity {
+public class ArtistDetailActivity extends AppCompatActivity {
 
     private String coverintent;
     private String albumsintent;

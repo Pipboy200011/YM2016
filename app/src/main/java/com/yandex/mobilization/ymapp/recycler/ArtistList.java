@@ -1,4 +1,4 @@
-package com.example.nyadmin.jsontest2;
+package com.yandex.mobilization.ymapp.recycler;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.yandex.mobilization.ymapp.R;
+import com.yandex.mobilization.ymapp.db.DatabaseHelper;
 
 
 public class ArtistList extends CursorRecyclerViewAdapter<ArtistList.MyCardHolder> {

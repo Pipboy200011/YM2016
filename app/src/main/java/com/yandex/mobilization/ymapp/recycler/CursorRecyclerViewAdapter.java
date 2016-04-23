@@ -1,4 +1,4 @@
-package com.example.nyadmin.jsontest2;
+package com.yandex.mobilization.ymapp.recycler;
 
 /*
  * Copyright (C) 2014 skyfish.jy@gmail.com

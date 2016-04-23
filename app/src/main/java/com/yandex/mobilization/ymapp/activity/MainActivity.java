@@ -1,5 +1,6 @@
-package com.example.nyadmin.jsontest2;
+package com.yandex.mobilization.ymapp.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.yandex.mobilization.ymapp.recycler.ArtistList;
+import com.yandex.mobilization.ymapp.db.DatabaseHelper;
+import com.yandex.mobilization.ymapp.R;
+import com.yandex.mobilization.ymapp.recycler.RecyclerItemClickListener;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         deleteDatabase(DatabaseHelper.DB_NAME);
+
 
 
 
@@ -59,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 String item_Scurl = mcursor.getString(mcursor.getColumnIndex(DatabaseHelper.COLUMN_SMALL_COVER_URL));
                 String item_Bcurl = mcursor.getString(mcursor.getColumnIndex(DatabaseHelper.COLUMN_BIG_COVER_URL));
 
-                Intent intent=new Intent(MainActivity.this,ArtistDetail.class);
+                Intent intent=new Intent(MainActivity.this,ArtistDetailActivity.class);
                 intent.putExtra(EXTRA_TITLE,item_title);
                 intent.putExtra(EXTRA_TRACKS,item_tracks);
                 intent.putExtra(EXTRA_ALBUMS,item_albums);
@@ -78,6 +87,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public static void deleteCache(Context context) {
+        try {
+            File dir = context.getCacheDir();
+            deleteDir(dir);
+        } catch (Exception e) {}
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+            return dir.delete();
+        }
+        else if(dir!= null && dir.isFile())
+            return dir.delete();
+        else {
+            return false;
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        deleteCache(this);
+        super.onDestroy();
+    }
 }
 
 

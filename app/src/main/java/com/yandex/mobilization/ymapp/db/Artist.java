@@ -1,14 +1,8 @@
-package com.example.nyadmin.jsontest2;
+package com.yandex.mobilization.ymapp.db;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Created by Nyadmin on 10.04.2016.
- */
+
 public class Artist {
     private long id;
     private String name;

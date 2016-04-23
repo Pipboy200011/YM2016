@@ -80,6 +80,10 @@ public class ArtistDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(titleintent);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
 
+        /*Picasso.with(this)
+                .load(coverintent)
+                .into(detailcover);*/
+
         Picasso.with(this)
                 .load(coverintent)
                 .resize(1050,1050)

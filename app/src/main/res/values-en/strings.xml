@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Yandex_Mobilization_2016</string>
+    <string name="splashtext">Yandex Mobilization 2016</string>
+    <string name="splashload">Researching the Universe, opening  worlds.</string>
+    <string name="splashtitle">Do the magic</string>
 </resources>

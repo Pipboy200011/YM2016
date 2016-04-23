@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Яндекс_Мобилизация_2016</string>
+    <string name="splashtext">Яндекс Мобилизация 2016</string>
+    <string name="splashload">Исследуем Вселенную, открываем миры.</string>
+    <string name="splashtitle">Делаем магию</string>
 </resources>

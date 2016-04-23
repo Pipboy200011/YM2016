@@ -26,4 +26,7 @@
         <item name="rippleColor">@android:color/white</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    </style>
+
 </resources>

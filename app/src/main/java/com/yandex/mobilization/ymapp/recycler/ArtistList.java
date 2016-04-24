@@ -34,6 +34,7 @@ public class ArtistList extends CursorRecyclerViewAdapter<ArtistList.MyCardHolde
         Picasso
                 .with(context)
                 .load(artistpicdb)
+                .placeholder(R.drawable.rocket)
                 .resize(320,320)
                 .centerInside()
                 .into(viewHolder.artistpic);

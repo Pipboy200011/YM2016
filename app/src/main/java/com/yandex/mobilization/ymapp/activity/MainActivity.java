@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 
 import com.yandex.mobilization.ymapp.recycler.ArtistList;
 import com.yandex.mobilization.ymapp.db.DatabaseHelper;
@@ -16,6 +18,10 @@ import com.yandex.mobilization.ymapp.R;
 import com.yandex.mobilization.ymapp.recycler.RecyclerItemClickListener;
 
 import java.io.File;
+
+
+import jp.wasabeef.recyclerview.adapters.SlideInRightAnimationAdapter;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerview1.setLayoutManager(new LinearLayoutManager(this));
 
 
+
         dbhelp = new DatabaseHelper(this);
         mdb = dbhelp.getReadableDatabase();
         mcursor = mdb.query(DatabaseHelper.DB_TABLE, null, null, null, null, null, null);
 
-        recyclerview1.setAdapter(new ArtistList(this, mcursor));
+
+        recyclerview1.setAdapter(new SlideInRightAnimationAdapter(new ArtistList(this,mcursor)));
 
         recyclerview1.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override

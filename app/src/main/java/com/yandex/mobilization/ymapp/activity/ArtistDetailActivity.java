@@ -45,9 +45,6 @@ public class ArtistDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            postponeEnterTransition();
-        }
 
         setContentView(R.layout.artistdetail);
 
@@ -91,9 +88,6 @@ public class ArtistDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(titleintent);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
 
-        /*Picasso.with(this)
-                .load(coverintent)
-                .into(detailcover);*/
 
         Picasso.with(this)
                 .load(coverintent)

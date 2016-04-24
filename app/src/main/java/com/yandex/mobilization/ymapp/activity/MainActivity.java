@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_SCURL,item_Scurl);
                 intent.putExtra(EXTRA_BCURL,item_Bcurl);
                 startActivity(intent);
+               // overridePendingTransition(R.anim.rotate,R.anim.rotate);
 
 
             }

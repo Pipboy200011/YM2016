@@ -52,11 +52,6 @@ public class SplashActivity extends AppCompatActivity {
         };
         t.start();
 
-       /* if (isNetworkConnected()){
-            String url="http://cache-default05f.cdn.yandex.net/download.cdn.yandex.net/mobilization-2016/artists-detail.png";
-            getTempFile(this,url);
-            Toast.makeText(this,"download file",Toast.LENGTH_LONG).show();
-        }*/
 
     }
 
@@ -84,22 +79,5 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    public File getTempFile(Context context, String url) {
-        File file = null;
-        try {
-            String fileName = Uri.parse(url).getLastPathSegment();
-            file = File.createTempFile(fileName, null, context.getCacheDir());
-        } catch (IOException e) {
-            // Error while creating file
-        }
-        return file;
-    }
-
-
-    private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        return cm.getActiveNetworkInfo() != null;
-    }
 
 }
